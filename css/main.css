@@ -10,6 +10,9 @@ font-face {
   src: url(../fonts/fontawesome-webfont.otf);
   font-family: custom;
 }
+.mobile-nav-trigger {
+  display: none;
+}
 a {
   text-decoration: none;
   color: var(--white-color);
@@ -140,7 +143,6 @@ main > div {
 main .about-us .about-grid {
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
 }
 main .about-us .about-grid .each-grid-for-about {
   text-align: center;
@@ -170,10 +172,10 @@ main .services .services-grid {
   display: flex;
   justify-content: space-between;
 }
-main .services .services-grid > div {
+.services-grid .services-image {
   width: 50%;
 }
-main .services .services-grid .services-text {
+main .services-grid .services-text {
   display: flex;
   flex-direction: column;
   width: 40%;
@@ -211,6 +213,7 @@ main .team {
 main .team .team-grid {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 main .team .team-grid .each-team--cell {
   width: 24%;
@@ -248,7 +251,8 @@ main .testimonial {
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
     url("../images/stats.jpg");
   color: var(--white-color);
-  background-size: 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
   margin: 0;
   padding-top: 1.5em;
 }
@@ -282,7 +286,7 @@ main .get-in-touch .contact-all-details {
   background-color: rgb(104, 185, 23);
   justify-content: flex-end;
   width: 50%;
-  padding: 100px 70px 100px 0;
+  padding: 100px 70px 100px 100px;
 }
 .contact--field {
   display: flex;
@@ -316,7 +320,7 @@ textarea {
   color: var(--white-color);
   padding: 7px 0 15px 3px;
   width: 400px;
-  max-width: 400px;
+  max-width: 200px;
 }
 textarea {
   height: 100px;
@@ -344,6 +348,7 @@ main .subscribe-field {
   margin: 0;
   align-items: center;
   background-color: red;
+  flex-wrap: wrap;
 }
 main .subscribe-field .subscribe-subsection {
   width: 50%;
@@ -389,4 +394,193 @@ footer {
 footer .each-link {
   font-size: 20px;
   margin: 0 12px 0 12px;
+}
+
+/* responsiveness */
+@media screen and (max-width: 1083px) {
+  header .nav-bar {
+    padding-right: 20px;
+  }
+  header .nav-bar .nav-image {
+    font-size: 20px;
+  }
+  .nav-bar .nav-links a {
+    margin: 0 10px 0 10px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  main .services-grid {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    justify-content: center;
+  }
+  main .services-grid .services-text,
+  .services-grid .services-image {
+    width: 100%;
+    justify-content: center;
+  }
+  main .services-grid .services-text {
+    width: 80%;
+    align-self: center;
+  }
+  main .services-grid .services-text {
+    margin-top: 1.5em;
+  }
+  main .about-us .about-grid {
+    justify-content: center;
+  }
+  main .about-us .about-grid .each-grid-for-about {
+    width: 40%;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .nav-bar .mobile-nav-trigger {
+    display: block;
+    margin-right: 30px;
+    border-style: solid;
+    border-width: thin;
+    padding: 5px 12px 5px 12px;
+    font-size: 20px;
+  }
+  header .nav-bar {
+    padding-left: 0;
+  }
+  header .nav-bar .nav-image {
+    margin-left: 100px;
+  }
+  .nav-bar {
+    position: relative;
+  }
+  .nav-bar .nav-links {
+    display: none;
+    position: absolute;
+    top: 50px;
+    background-color: rgba(0, 0, 0, 0.9);
+    width: 100%;
+    padding-left: 100px;
+    flex-wrap: wrap;
+  }
+  .nav-bar .nav-links a {
+    padding: 20px 5px 20px 5px;
+  }
+}
+@media screen and (max-width: 800px) {
+  :root {
+    --new-padding: 40px;
+  }
+  header .nav-bar .nav-image {
+    margin-left: var(--new-padding);
+  }
+  header .welcoming-text {
+    padding-left: var(--new-padding);
+  }
+  main > div {
+    padding: 70px var(--new-padding) 70px var(--new-padding);
+  }
+  .nav-bar .nav-links {
+    flex-direction: column;
+  }
+  main .team .team-grid .each-team--cell {
+    width: 40%;
+  }
+  main .food .food-grid .each-food--cell {
+    width: 49%;
+  }
+  main .testimonial .sub-testimonial {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  main .testimonial .sub-testimonial [class^="testimonial-text"] {
+    width: 40%;
+  }
+  main .about-us .about-grid .each-grid-for-about {
+    width: 50%;
+  }
+  main .get-in-touch .contact-grid {
+    flex-wrap: wrap;
+  }
+  main .get-in-touch .contact-all-details,
+  main .get-in-touch .contact-form {
+    width: 100%;
+  }
+  .contact-form form input,
+  textarea {
+    max-width: 400px;
+  }
+  .contact-form {
+    padding: 100px var(--new-padding) 100px var(--new-padding);
+    justify-content: center;
+  }
+  main .subscribe-field {
+    padding-bottom: 3em;
+    padding-top: 3em;
+  }
+
+  main .subscribe-field .subscribe-subsection {
+    width: 100%;
+  }
+  footer {
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  :root {
+    --final-measurement: 90%;
+  }
+  main .food .food-grid .each-food--cell {
+    width: var(--final-measurement);
+  }
+  main .about-us .about-grid .each-grid-for-about {
+    width: var(--final-measurement);
+    margin-bottom: 15px;
+  }
+  main .team .team-grid .each-team--cell {
+    width: var(--final-measurement);
+  }
+  main .testimonial {
+    position: relative;
+  }
+  main .testimonial .sub-testimonial [class^="testimonial-text"] {
+    width: 100%;
+  }
+  main .testimonial .sub-testimonial .testimonial-text--left {
+    margin-bottom: 30px;
+  }
+  main .testimonial .sub-testimonial [class^="arrow"] {
+    position: absolute;
+  }
+  main .testimonial .sub-testimonial .arrow-left {
+    left: 10px;
+  }
+  main .testimonial .sub-testimonial .arrow-right {
+    right: 10px;
+  }
+  .contact-form form input,
+  textarea {
+    max-width: 300px;
+  }
+}
+@media screen and (max-width: 360px) {
+  :root {
+    --final-padding: 20px;
+  }
+  header .nav-bar .nav-image {
+    margin-left: var(--final-padding);
+  }
+  header .welcoming-text {
+    padding-left: var(--final-padding);
+  }
+  main > div {
+    padding: 70px var(--final-padding) 70px var(--final-padding);
+  }
+  main .get-in-touch .contact-all-details {
+    padding: 70px var(--final-padding) 70px var(--final-padding);
+  }
+  footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
